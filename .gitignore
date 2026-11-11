@@ -1,0 +1,34 @@
+# OSX
+.DS_Store
+
+# Android / IntelliJ
+build/
+.gradle/
+local.properties
+*.iml
+.idea/
+captures/
+.externalNativeBuild
+.cxx/
+
+# Node / npm
+node_modules/
+npm-debug.log
+yarn-error.log
+.npm
+
+# Metro
+.metro-health-check*
+*.jsbundle
+
+# Testing
+coverage/
+
+# Entorno (nunca commitear secretos)
+.env
+.env.*
+
+# Editor / sistema
+.vscode/
+*.log
+Thumbs.db
