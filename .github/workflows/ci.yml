@@ -1,0 +1,49 @@
+name: CI
+
+# Flujo de calidad: lint + typecheck + tests.
+# Inerte hasta que exista package.json (issue #1): el filtro de rutas evita
+# ejecutarlo en un repositorio solo-documentación, y el guard de hashFiles
+# protege ante cualquier cambio que no toque código.
+
+on:
+  pull_request:
+    paths:
+      - "package.json"
+      - "package-lock.json"
+      - "src/**"
+      - "__tests__/**"
+      - ".github/workflows/ci.yml"
+  push:
+    branches: [main]
+    paths:
+      - "package.json"
+      - "package-lock.json"
+      - "src/**"
+      - "__tests__/**"
+
+jobs:
+  quality:
+    name: Lint, typecheck y tests
+    if: ${{ hashFiles('package.json') != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: ESLint
+        run: npm run lint
+
+      - name: TypeScript
+        run: npm run typecheck
+
+      - name: Jest
+        run: npm test -- --coverage
