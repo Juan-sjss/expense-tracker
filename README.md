@@ -166,7 +166,14 @@ erDiagram
 
 ## 🚀 Instalación y ejecución
 
-> ⚠️ **Estado actual**: el repositorio arranca con documentación, plantillas y estructura. El scaffolding de la app se implementa en el [issue #1](https://github.com/Juan-sjss/expense-tracker/issues/1). Una vez completado:
+### Requisitos
+
+- Node.js 20 LTS
+- JDK 17
+- Android Studio con Android SDK y un emulador (o dispositivo físico con depuración USB)
+- Variable de entorno `ANDROID_HOME` apuntando al SDK (p. ej. `C:\Users\<tu-usuario>\AppData\Local\Android\Sdk`)
+
+### Pasos
 
 ```bash
 # Clonar
@@ -176,7 +183,10 @@ cd expense-tracker
 # Instalar dependencias
 npm install
 
-# Compilar y desplegar en emulador o dispositivo Android
+# Arrancar el bundler de Metro en una terminal
+npm start
+
+# En otra terminal, compilar y desplegar en emulador o dispositivo Android
 npm run android
 
 # Calidad
@@ -184,6 +194,8 @@ npm run lint        # ESLint
 npm run typecheck   # tsc --noEmit
 npm test            # Jest
 ```
+
+> La primera compilación puede tardar varios minutos (descarga de dependencias de Gradle). Las siguientes son mucho más rápidas.
 
 ## 🧪 Testing
 
