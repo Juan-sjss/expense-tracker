@@ -20,7 +20,6 @@ on:
 jobs:
   quality:
     name: Lint, typecheck y tests
-    if: ${{ hashFiles('package.json') != '' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
