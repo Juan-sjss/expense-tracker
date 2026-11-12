@@ -1,10 +1,5 @@
 name: CI
 
-# Flujo de calidad: lint + typecheck + tests.
-# Inerte hasta que exista package.json (issue #1): el filtro de rutas evita
-# ejecutarlo en un repositorio solo-documentación, y el guard de hashFiles
-# protege ante cualquier cambio que no toque código.
-
 on:
   pull_request:
     paths:
@@ -20,11 +15,11 @@ on:
       - "package-lock.json"
       - "src/**"
       - "__tests__/**"
+  workflow_dispatch:
 
 jobs:
   quality:
     name: Lint, typecheck y tests
-    if: ${{ hashFiles('package.json') != '' }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
