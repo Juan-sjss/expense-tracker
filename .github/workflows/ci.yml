@@ -5,7 +5,7 @@ name: CI
 # ejecutarlo en un repositorio solo-documentación, y el guard de hashFiles
 # protege ante cualquier cambio que no toque código.
 
-on:
+"on":
   pull_request:
     paths:
       - "package.json"
@@ -20,6 +20,7 @@ on:
       - "package-lock.json"
       - "src/**"
       - "__tests__/**"
+  workflow_dispatch:
 
 jobs:
   quality:
