@@ -82,3 +82,7 @@ Thumbs.db
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+
+# Bases de datos locales
+*.db
+*.db-*
